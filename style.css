@@ -1,0 +1,221 @@
+/* --- Global Styles --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- Main Layout --- */
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr 250px;
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* * 1. THE REUSABLE "GLASS" STYLE
+ * We put all the repeating code into ONE class.
+*/
+.glass-panel {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(7px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 2px 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* * 2. SPECIFIC STYLES FOR EACH COLUMN 
+ * These classes only hold what's UNIQUE to them.
+*/
+
+/* Left Sidebar (The "Stage") */
+.left-sidebar {
+    position: relative;
+    overflow: hidden;
+    /* We override the padding from .glass-panel */
+    padding: 0; 
+}
+
+/* Middle Content (Scrolling) */
+.middle-content {
+    background: rgba(33, 160, 105, 0.2);
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 10px;
+}
+.middle-content::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* --- Left Sidebar Stacking Layers --- */
+
+/* Layer 1: Image */
+.sidebar-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    z-index: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Layer 2: Gradient & Text */
+.profile-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.9) 50%, 
+        transparent 100%
+    );
+    padding: 40px 20px 20px 20px; 
+    box-sizing: border-box; 
+    text-align: center;
+}
+
+.profile-overlay .name {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.profile-overlay .aka {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin: 5px 0 0 0;
+}
+
+/* --- Right Sidebar Navigation --- */
+.right-sidebar {
+    /* Helps center the list */
+    text-align: center;
+}
+
+.right-sidebar h3 {
+    color: #fff;
+    margin-top: 0;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.nav-links {
+    list-style: none;  /* Removes the bullet points */
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.nav-links li {
+    margin-bottom: 15px; /* Spaces out the links */
+}
+
+.nav-links a {
+    text-decoration: none; /* Removes the underline */
+    color: #eee;
+    font-weight: 500;
+    font-size: 1rem;
+    
+    /* --- Cool Hover Effect --- */
+    display: block; /* Makes the entire block clickable, not just text */
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+    color: #fff; /* Make text pure white on hover */
+}/* --- Middle Content Styling --- */
+
+/* This is the magic line! */
+.middle-content {
+    scroll-behavior: smooth;
+    
+    /* We already had these, they are still needed */
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.middle-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* This styles our new sections */
+.content-section {
+   
+    min-height: 90vh; /* Make each section almost 1 full screen */
+    margin-bottom: 20px; /* Just a small margin */
+}
+
+
+.content-section h2 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.content-section p {
+    color: #eee;
+    font-size: 1rem;
+    line-height: 1.6; /* Makes text easier to read */
+}
+
+/* --- Right Sidebar Navigation --- */
+
+/* This adds a separator line and space between the two nav blocks */
+.nav-section + .nav-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.right-sidebar h3 {
+    color: #fff;
+    margin-top: 0;
+    font-weight: 600;
+}
+
+/* ... all your other .nav-links styles are still fine ... */
+
+/* We can style the "new page" link differently if we want */
+.new-page-link {
+    /* Example: make it stand out */
+    font-style: italic;
+    color: #f0f0f0;
+}
+
+.new-page-link:hover {
+    background: rgba(100, 200, 255, 0.2); /* A different hover color */
+    color: #fff;
+}
+
+/* --- Individual Section Styles (Examples) --- */
+
+.about-style {
+    /* You could add a subtle background tint */
+    background: rgba(100, 150, 255, 0.05); /* Faint blue tint */
+}
+
+.experience-style {
+    /* Or a different tint */
+    background: rgba(100, 255, 150, 0.05); /* Faint green tint */
+}
