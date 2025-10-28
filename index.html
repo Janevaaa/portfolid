@@ -13,31 +13,47 @@
     <div class="container">
 
      <aside class="left-sidebar glass-panel">
-    <img src="images/profile.jpeg" alt="Janeva's profile picture" class="sidebar-image">
-    
-    <div class="profile-overlay">
-        <h3 class="name">JANEVA</h3>
-        <p class="aka">aka Abhinav aka Satyam</p>
+    <div class="flip-container" id="flipContainer">
+        <!-- FRONT FACE -->
+        <div class="flip-face flip-front">
+            <img src="images/profile.jpeg" alt="Janeva's profile picture" class="sidebar-image" id="sidebarImage">
+            
+            <div class="profile-overlay">
+                <h3 class="name">JANEVA</h3>
+                <p class="aka">aka Abhinav aka Satyam</p>
+            </div>
+        </div>
+
+        <!-- BACK FACE -->
+        <div class="flip-face flip-back">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div class="story-content" id="storyContent">
+                <!-- Story content will be injected here -->
+            </div>
+        </div>
     </div>
 </aside>
         
         
         <main class="middle-content glass-panel">      
 
-    <section id="about" class="content-section about-style" data-image = "images/profile.jpeg">
-        <h2>About Me</h2>
-        <p>This is where you can write your "Work Oriented" intro. Talk about your skills, what you're passionate about, and what you're learning.</p>
-    </section>
+   <section id="about" class="content-section about-style" data-image="images/profile.jpeg">
+    <h2>About Me 🙄</h2>
+    <p>Hey, Myself Abhinav pandey a 20 year old B.tech. CSE student from lucknow . My hometown is <span class="trigger-word" data-story="Bastidileema">Basti</span> . i am currently learning DSA and Webdev. I love recording myself and taling to camera. I can edit videos and know basics of designing go to Works section for more of that . more about in More Abhinav section (my favorite section 🫶) </p>
+</section>
 
-    <section id="experience" class="content-section about-experience" data-image="images/experience.jpeg">
-                <h2>Experience</h2>
-        <p>Placeholder for your work or internship experience. We can list company names, roles, and dates here.</p>
-    </section>
+<section id="experience" class="content-section about-experience" data-image="images/experience.jpeg">
+    <h2>Experience</h2>
+    <p>I have <span class="trigger-word" data-story="Really">no working experience</span> till now (please hire me 😭) </p>
+    <img src="images/crying.gif" alt="crying man" class="animated-gif">
+    <p><a href="docs/My_Resume.pdf" target="_blank" class="resume-link"> This is my resume. </a></p>
+</section>
+   
     
     <section id="achievements" class="content-section about-achievements" data-image="images/achivements.jpeg">
-        <h2>Achievements</h2>
-        <p>Placeholder for any awards, certifications, or notable accomplishments.</p>
-    </section>
+    <h2>Achievements</h2>
+    <p>Placeholder for any awards, certifications, or notable accomplishments.</p>
+</section>
 
    
 
