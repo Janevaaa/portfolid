@@ -50,8 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollContainer = document.querySelector('.middle-content');
 
    // 2. Define the "job" to do when a section enters/leaves
+
+   // Keep track of the currently active section's class
+let currentSectionClass = '';
+
+// 2. Define the "job" to do when a section enters/leaves
 function onSectionIntersect(entries) {
     entries.forEach(entry => {
+        // Get the ID of the section (e.g., "about", "experience")
+        const sectionId = entry.target.id; 
+        // Create the new body class name (e.g., "body-section-about")
+        const newBodyClass = `body-section-${sectionId}`;
+
         if (entry.isIntersecting) {
 
             // --- 1. IMAGE SWAPPING (Your old code) ---
@@ -64,10 +74,24 @@ function onSectionIntersect(entries) {
                 }, 300);
             }
 
-            // --- 2. NEW "SOUL" ANIMATION ---
-            // Add the .is-visible class to trigger the CSS animation
+            // --- 2. "SOUL" ANIMATION (Your old code) ---
             entry.target.classList.add('is-visible');
 
+            // --- 3. NEW THEME CHANGE ---
+            // Remove the previous section's class from the body
+            if (currentSectionClass && currentSectionClass !== newBodyClass) {
+                document.body.classList.remove(currentSectionClass);
+            }
+            // Add the new section's class to the body
+            document.body.classList.add(newBodyClass);
+            // Update the tracker
+            currentSectionClass = newBodyClass;
+
+        } else {
+             // Optional: Remove class when section scrolls out of view
+             // document.body.classList.remove(newBodyClass); 
+             // If you uncomment this, also reset currentSectionClass maybe? 
+             // Decide if you want the theme to "stick" or revert.
         }
     });
 }
@@ -125,4 +149,29 @@ minimizeBtn.addEventListener('click', () => {
     container.classList.toggle('nav-minimized');
 });
 
-});
+// --- 5. BGM MUSIC TOGGLE ---
+    const audio = document.getElementById('bgm-audio');
+    const toggleBtn = document.getElementById('bgm-toggle');
+
+    if (audio && toggleBtn) {
+        // Set a default volume
+        audio.volume = 0.3; 
+
+        toggleBtn.addEventListener('click', () => {
+            const icon = toggleBtn.querySelector('i');
+
+            if (audio.paused) {
+                audio.play();
+                icon.classList.remove('fa-volume-up');
+                icon.classList.add('fa-volume-mute');
+            } else {
+                audio.pause();
+                icon.classList.remove('fa-volume-mute');
+                icon.classList.add('fa-volume-up');
+            }
+        });
+    }
+
+}); // <-- This should be the last line of your file
+
+

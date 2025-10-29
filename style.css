@@ -9,6 +9,7 @@ body {
     font-family: 'Poppins', sans-serif;
     height: 100vh;
     overflow: hidden;
+    background-attachment: fixed;
 }
 
 /* --- Main Layout --- */
@@ -43,12 +44,14 @@ body {
 }
 
 /* Middle Content (Scrolling) */
+
 .middle-content {
-    /* background: rgb(27, 28, 27 ); */
     background: linear-gradient(to bottom, #1a1a1a, #333333);
     overflow-y: auto;
     scrollbar-width: none;
     padding: 10px;
+    scroll-behavior: smooth;
+    transition: background 0.5s ease-in-out; 
 }
 .middle-content::-webkit-scrollbar {
     display: none;
@@ -693,3 +696,88 @@ body {
     object-position: top; /* Aligns the crop to the top of the image */
 }
 
+/* --- Dynamic Section Themes --- */
+
+/* Default (About section) */
+.body-section-about .middle-content {
+    background: linear-gradient(to bottom, #1a1a1a, #333333); /* Dark Gray */
+}
+
+/* Experience section (Transition Gradient) */
+.body-section-experience .middle-content {
+    /* Gradient from dark grey to a dark slate blue */
+    background: linear-gradient(to bottom, #2d2d2d, #2c3e50); 
+}
+/* Achievements section (using colors from achivements.jpg) */
+.body-section-achievements .middle-content {
+    /* Gradient from dark purple to pink */
+    background: linear-gradient(to bottom, #4b0082, #ee82ee); /* Indigo to Violet */
+}
+
+/* --- Sidebar Social Links --- */
+.sidebar-social-links {
+    position: absolute; /* Position it relative to the sidebar */
+    bottom: 90px;  /* Adjust this to move it up or down */
+    width: 100%;
+    text-align: center;
+    z-index: 3; /* Make sure it's above the overlay gradient */
+}
+
+.sidebar-social-links a {
+    color: #fff;
+    font-size: 1.5rem; /* Make icons 1.5x bigger */
+    margin: 0 10px; /* Space them out */
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-social-links a:hover {
+    color: #ccc; /* Or any color you prefer */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* --- Minimal Music Toggle Button --- */
+
+/* This is the pulsing glow animation */
+@keyframes pulse-glow {
+    0% {
+        transform: scale(1);
+        color: #00BFFF; /* Deep Sky Blue */
+        text-shadow: 0 0 10px #00BFFF;
+    }
+    50% {
+        transform: scale(1.1);
+        color: #fff;
+        text-shadow: 0 0 20px #fff;
+    }
+    100% {
+        transform: scale(1);
+        color: #00BFFF;
+        text-shadow: 0 0 10px #00BFFF;
+    }
+}
+
+/* Make the button invisible, just a click area */
+.music-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px; /* Make it easy to click */
+}
+
+/* Style the icon itself */
+.music-toggle-btn i {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.music-toggle-btn:hover i {
+    color: #ccc;
+}
+
+/* This is the "ON" state */
+.music-toggle-btn.is-playing i {
+    /* Run the pulse animation */
+    animation: pulse-glow 2s infinite ease-in-out;
+}

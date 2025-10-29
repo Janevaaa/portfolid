@@ -17,13 +17,21 @@
     <div class="flip-container" id="flipContainer">
         <!-- FRONT FACE -->
         <div class="flip-face flip-front">
-            <img src="images/profile.jpeg" alt="Janeva's profile picture" class="sidebar-image" id="sidebarImage">
-            
-            <div class="profile-overlay">
-                <h3 class="name">JANEVA</h3>
-                <p class="aka">aka Abhinav aka Satyam</p>
-            </div>
-        </div>
+    <img src="images/profile.jpeg" alt="Janeva's profile picture" class="sidebar-image" id="sidebarImage">
+
+    <div class="profile-overlay">
+        <h3 class="name">JANEVA</h3>
+        <p class="aka">aka Abhinav aka Satyam</p>
+    </div>
+
+    <div class="sidebar-social-links">
+        <a href="https://github.com/Janevaaa" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/abhinav-pandey-296998334/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/YOUR-USERNAME" target="_blank" title="X / Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/_abhinav0pandey_/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://leetcode.com/YOUR-USERNAME" target="_blank" title="LeetCode"><i class="fas fa-code"></i></a>
+    </div>
+    </div>
 
         <!-- BACK FACE -->
         <div class="flip-face flip-back">
@@ -40,12 +48,11 @@
 
    <section id="about" class="content-section about-style" data-image="images/profile.jpeg">
     <h2>About Me 🙄</h2>
-    <p>Hey, Myself Abhinav pandey a 20 year old B.tech. CSE student from lucknow . My hometown is <span class="trigger-word" data-story="Bastidileema">Basti</span> . i am currently learning DSA and Webdev.
-         I love recording myself and taling to camera. I can edit videos and know basics of designing go to Works section for more of that . 
-         more about in More Abhinav section (my favorite section 🫶) </p>
+    <p>Hey, I’m Abhinav Pandey, a 20-year-old B.Tech CSE student from Lucknow, originally from <span class="trigger-word" data-story="Bastidileema">Basti</span>. I’m currently learning DSA and Web Development. I enjoy recording myself and talking to the camera, and I also have skills in video editing and basic design. You can check out more of my work in the Works section and if you want to really get to know me, 
+        head over to the “More Abhinav” section (my favorite one 🫶). </p>
 
          <div class="timeline-container">
-    <h3>My Life Wheel (Academics)</h3>
+    <h3>Life Wheel</h3>
     <div class="timeline-scroller">
         
         <div class="timeline-bar"></div>
@@ -151,8 +158,23 @@
         </a>
     </div>
 
+    <nav class="right-sidebar glass-panel">
+    <div class="nav-section">
+        <a href="more.html" class="personal-side-button">
+            </a>
+    </div>
+
+    <div class="nav-section">
+        <button id="bgm-toggle" class="music-toggle-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+</nav>
+
 </nav>
     </div>
+    <audio id="bgm-audio" src="audio/bgm.mp3" loop></audio>
     <script src="app.js"></script>
 </body>
 </html>
