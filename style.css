@@ -44,7 +44,8 @@ body {
 
 /* Middle Content (Scrolling) */
 .middle-content {
-    background: rgba(33, 160, 105, 0.2);
+    /* background: rgb(27, 28, 27 ); */
+    background: linear-gradient(to bottom, #1a1a1a, #333333);
     overflow-y: auto;
     scrollbar-width: none;
     padding: 10px;
