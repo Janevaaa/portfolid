@@ -105,6 +105,7 @@ body {
 .right-sidebar {
     /* Helps center the list */
     text-align: center;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .right-sidebar h3 {
