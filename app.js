@@ -83,6 +83,38 @@ function onSectionIntersect(entries) {
     sections.forEach(section => {
         observer.observe(section);
     });
+     
+    // ------------- Timeline: horizontal scroll with mouse wheel only -------------
+(function setupTimelineScroller() {
+  const scroller = document.querySelector('.timeline-scroller');
+  if (!scroller) return;
+
+  // convert vertical mouse wheel to horizontal scroll
+  const WHEEL_MULT = 1.6;
+
+  scroller.addEventListener('wheel', (ev) => {
+    if (ev.shiftKey) return; // allow normal horizontal scroll when shift is held
+    ev.preventDefault();
+    scroller.scrollLeft += ev.deltaY * WHEEL_MULT;
+  }, { passive: false });
+
+  // optional: allow arrow key navigation when cursor is over the scroller
+  let pointerInside = false;
+  scroller.addEventListener('mouseenter', () => { pointerInside = true; });
+  scroller.addEventListener('mouseleave', () => { pointerInside = false; });
+
+  window.addEventListener('keydown', (e) => {
+    if (!pointerInside) return;
+    if (e.key === 'ArrowRight') {
+      scroller.scrollBy({ left: 150, behavior: 'smooth' });
+    } else if (e.key === 'ArrowLeft') {
+      scroller.scrollBy({ left: -150, behavior: 'smooth' });
+    }
+  });
+})();
+
+
+
 
     // --- 3. NEW NAV-MINIMIZE LOGIC ---
 
