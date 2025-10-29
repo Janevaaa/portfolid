@@ -19,6 +19,7 @@ body {
     padding: 20px;
     height: 100vh;
     box-sizing: border-box;
+    transition: grid-template-columns 0.4s ease-in-out;
 }
 
 /* * 1. THE REUSABLE "GLASS" STYLE
@@ -355,4 +356,135 @@ body {
 .resume-link:hover {
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
+}
+
+/* --- Dynamic Nav Styles --- */
+
+#minimize-nav-btn {
+    position: absolute;
+    top: 15px;
+    left: -15px; /* Sits just outside the panel */
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.4s ease;
+}
+#minimize-nav-btn i {
+    transition: transform 0.4s ease;
+}
+
+/* --- Default State (Maximized) --- */
+.nav-section h3 i,
+.nav-links i,
+.personal-side-button i {
+    display: none; /* Hide all icons by default */
+}
+.nav-section h3,
+.nav-links a {
+    padding-left: 10px; /* Give text space */
+}
+.personal-side-button {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #eee;
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+.personal-side-button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- MINIMIZED STATE --- */
+
+/* 1. Change the grid */
+.container.nav-minimized {
+    /* Reduce nav from 250px to 80px */
+    grid-template-columns: 300px 1fr 80px; 
+}
+
+/* 2. Flip the button icon */
+.container.nav-minimized #minimize-nav-btn i {
+    transform: rotate(180deg);
+}
+
+/* 3. Hide all text */
+.container.nav-minimized .nav-section h3 span,
+.container.nav-minimized .nav-links span,
+.container.nav-minimized .personal-text {
+    display: none;
+}
+
+/* 4. Show all icons and center them */
+.container.nav-minimized .nav-section h3,
+.container.nav-minimized .nav-links a,
+.container.nav-minimized .personal-side-button {
+    padding: 15px 0;
+    text-align: center;
+}
+.container.nav-minimized .nav-section h3 i,
+.container.nav-minimized .nav-links i,
+.container.nav-minimized .personal-side-button i {
+    display: block;
+    font-size: 1.5rem; /* Make icons a good size */
+    margin: 0;
+}
+
+.container.nav-minimized .personal-side-button i {
+    font-size: 2rem; /* Make this one match its old size */
+}
+
+/* --- Auto-Minimize for Medium Screens --- */
+/* This applies when the screen is 1200px or less */
+@media (max-width: 1200px) {
+    
+    /* 1. Change the grid to the minimized state */
+    .container {
+        grid-template-columns: 300px 1fr 80px; 
+    }
+
+    /* 2. Hide the manual button (it's automatic now) */
+    #minimize-nav-btn {
+        display: none;
+    }
+
+    /* 3. Hide all text */
+    .nav-section h3 span,
+    .nav-links span,
+    .personal-text {
+        display: none;
+    }
+    
+    /* 4. Show all icons and center them */
+    .nav-section h3,
+    .nav-links a,
+    .personal-side-button {
+        padding: 15px 0;
+        text-align: center;
+    }
+    .nav-section h3 i,
+    .nav-links i,
+    .personal-side-button i {
+        display: block;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    
+    .personal-side-button i {
+        font-size: 2rem; /* Keep this one bigger */
+    }
+}
+
+/* --- Mobile Responsive Styles (already in your file) --- */
+/* This will override the 1200px rule on small screens */
+@media (max-width: 900px) {
+    /* ...your existing mobile styles are here... */
 }

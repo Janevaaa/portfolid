@@ -78,4 +78,13 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(section);
     });
 
+    // --- 3. NEW NAV-MINIMIZE LOGIC ---
+
+const minimizeBtn = document.querySelector('#minimize-nav-btn');
+const container = document.querySelector('.container');
+
+minimizeBtn.addEventListener('click', () => {
+    container.classList.toggle('nav-minimized');
+});
+
 });
