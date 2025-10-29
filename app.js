@@ -49,22 +49,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll('.content-section');
     const scrollContainer = document.querySelector('.middle-content');
 
-    function onSectionIntersect(entries) {
-        entries.forEach(entry => {
-            // Only change image if sidebar is NOT flipped
-            if (entry.isIntersecting && !flipContainer.classList.contains('flipped')) {
-                const newImage = entry.target.dataset.image;
+   // 2. Define the "job" to do when a section enters/leaves
+function onSectionIntersect(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
 
-                // Fade effect
+            // --- 1. IMAGE SWAPPING (Your old code) ---
+            const newImage = entry.target.dataset.image;
+            if (newImage) {
                 sidebarImage.style.opacity = 0;
-
                 setTimeout(() => {
                     sidebarImage.src = newImage;
                     sidebarImage.style.opacity = 1;
                 }, 300);
             }
-        });
-    }
+
+            // --- 2. NEW "SOUL" ANIMATION ---
+            // Add the .is-visible class to trigger the CSS animation
+            entry.target.classList.add('is-visible');
+
+        }
+    });
+}
 
     const options = {
         root: scrollContainer,

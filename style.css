@@ -488,3 +488,35 @@ body {
 @media (max-width: 900px) {
     /* ...your existing mobile styles are here... */
 }
+
+
+/* --- "Soul" Animations --- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* Start 30px down */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End at its normal position */
+  }
+}
+
+.content-section {
+    /* ... your existing styles (min-height, etc) ... */
+
+    /* This tells the section to animate when it's triggered */
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+
+    /* Start invisible (we'll make it visible with JS) */
+    opacity: 0; 
+    /* This will be overwritten by the "is-visible" class */
+    animation-name: none; 
+}
+
+.content-section.is-visible {
+    opacity: 1;
+    animation-name: fadeInUp;
+}
