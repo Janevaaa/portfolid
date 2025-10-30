@@ -566,8 +566,9 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     margin: 0 0 15px 0;
-    text-align: left; /* Fix alignment */
+    text-align: center; /* Fix alignment */
     border-bottom: none;
+    opacity: 0.6;
 }
 
 .timeline-scroller {
@@ -646,7 +647,7 @@ body {
     color: #333;
     overflow: hidden;
     width: 200px; /* Fixed width for the card */
-    
+    height: 100% ;
 }
 .timeline-card img {
     width: 100%;
@@ -781,3 +782,11 @@ body {
     /* Run the pulse animation */
     animation: pulse-glow 2s infinite ease-in-out;
 }
+
+/* --- Highlight "Current" Card --- */
+#current-card {
+  /* Add a clean, 2px white border */
+  border: 3.5px solid #00ffc8; 
+}
+
+

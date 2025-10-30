@@ -150,27 +150,28 @@ minimizeBtn.addEventListener('click', () => {
 });
 
 // --- 5. BGM MUSIC TOGGLE ---
-    const audio = document.getElementById('bgm-audio');
-    const toggleBtn = document.getElementById('bgm-toggle');
+const audio = document.getElementById('bgm-audio');
+const toggleBtn = document.getElementById('bgm-toggle');
 
-    if (audio && toggleBtn) {
-        // Set a default volume
-        audio.volume = 0.3; 
+if (audio && toggleBtn) {
+    audio.volume = 0.3; // Set a default volume
 
-        toggleBtn.addEventListener('click', () => {
-            const icon = toggleBtn.querySelector('i');
+    toggleBtn.addEventListener('click', () => {
+        const icon = toggleBtn.querySelector('i');
 
-            if (audio.paused) {
-                audio.play();
-                icon.classList.remove('fa-volume-up');
-                icon.classList.add('fa-volume-mute');
-            } else {
-                audio.pause();
-                icon.classList.remove('fa-volume-mute');
-                icon.classList.add('fa-volume-up');
-            }
-        });
-    }
+        if (audio.paused) {
+            audio.play();
+            icon.classList.remove('fa-volume-up');
+            icon.classList.add('fa-volume-mute');
+            toggleBtn.classList.add('is-playing'); // Add this class
+        } else {
+            audio.pause();
+            icon.classList.remove('fa-volume-mute');
+            icon.classList.add('fa-volume-up');
+            toggleBtn.classList.remove('is-playing'); // Remove this class
+        }
+    });
+}
 
 }); // <-- This should be the last line of your file
 
